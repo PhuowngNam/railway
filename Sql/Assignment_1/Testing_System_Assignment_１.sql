@@ -1,5 +1,5 @@
 
-create database Manage;
+create database TestingSystem;
 CREATE TABLE Department (
     DepartmentID int NOT NULL AUTO_INCREMENT,
     DepartmentName varchar(255) NOT NULL,
