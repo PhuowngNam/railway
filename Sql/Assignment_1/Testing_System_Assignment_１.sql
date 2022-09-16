@@ -57,7 +57,8 @@ CREATE TABLE `Question` (
 	CreateDate date,
     PRIMARY KEY (QuestionID),
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion(CategoryID),
-    FOREIGN KEY (TypeID) REFERENCES TypeQuestion(TypeID)
+    FOREIGN KEY (TypeID) REFERENCES TypeQuestion(TypeID),
+    FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
 );
 CREATE TABLE `Answer` (
     AnswerID int NOT NULL AUTO_INCREMENT,
@@ -75,11 +76,14 @@ CREATE TABLE `Exam` (
 	Duration date NOT NULL,
     CreatorID int NOT NULL ,
     CreateDate date NOT NULL,
-    PRIMARY KEY (ExamID)
+    PRIMARY KEY (ExamID),
+    FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion(CategoryID),
+    FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
 );
 CREATE TABLE `ExamQuestion` (
     ExamID int NOT NULL,
     QuestionID int NOT NULL,
+    PRIMARY KEY (ExamID,QuestionID),
     FOREIGN KEY (ExamID) REFERENCES `Exam`(ExamID),
     FOREIGN KEY (QuestionID) REFERENCES `Question`(QuestionID)
 );
