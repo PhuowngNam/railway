@@ -27,12 +27,14 @@ CREATE TABLE `Group` (
     GroupName varchar(255) NOT NULL,
     CreatorID int NOT NULL UNIQUE,
     CreateDate date,
-    PRIMARY KEY (GroupID)
+    PRIMARY KEY (GroupID),
+    FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
 );
 CREATE TABLE `GroupAccount` (
     GroupID int NOT NULL,
     AccountID int NOT NULL,
     JoinDate date NOT NULL,
+    PRIMARY KEY (GroupID, AccountID),
     FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID),
     FOREIGN KEY (AccountID) REFERENCES `Account`(AccountID)
 );
