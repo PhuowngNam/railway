@@ -1,5 +1,4 @@
-
-create database TestingSystem;
+CREATE DATABASE TestingSystem;
 CREATE TABLE Department (
     DepartmentID int NOT NULL AUTO_INCREMENT,
     DepartmentName varchar(255) NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE `Account` (
 CREATE TABLE `Group` (
     GroupID int NOT NULL AUTO_INCREMENT,
     GroupName varchar(255) NOT NULL,
-    CreatorID int NOT NULL UNIQUE,
+    CreatorID int NOT NULL,
     CreateDate date,
     PRIMARY KEY (GroupID),
     FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
@@ -72,7 +71,7 @@ CREATE TABLE `Exam` (
     ExamID int NOT NULL AUTO_INCREMENT,
     `Code` int NOT NULL,
     Title varchar(255) NOT NULL,
-    CategoryID int NOT NULL UNIQUE,
+    CategoryID int NOT NULL,
 	Duration date NOT NULL,
     CreatorID int NOT NULL ,
     CreateDate date NOT NULL,
