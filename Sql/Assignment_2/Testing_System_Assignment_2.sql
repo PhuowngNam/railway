@@ -91,13 +91,13 @@ INSERT INTO `Answer` (Content, QuestionID, isCorrect)
 select * from `Answer`;      
 -- Add data Exam:
 INSERT INTO `Exam` (ExamID, `Code`, Title, CategoryID, Duration, CreatorID, CreateDate)
-			VALUES (1, 125, 'Thuyết minh tính chất', 1, 60, 1,'2012-09-09');
+			VALUES (1, 125, 'Thuyết minh tính chất', 1, 60, 1,'2019-12-30');
 INSERT INTO `Exam` (`Code`, Title, CategoryID, Duration, CreatorID, CreateDate)
 			VALUES (126, 'giải phương trình', 2, 45, 5,'2016-02-10'),
-                   (127, 'tính gia tốc', 4, 65, 2,'2018-10-10'),
+                   (127, 'tính gia tốc', 4, 65, 2,'2020-10-10'),
                    (128, 'đánh giá thực trạng', 5, 45, 3,'2017-10-11'),
-                   (129, 'thực hành và lý giải', 6, 50, 4,'2018-01-03'),
-                   (130, 'tính thiết yếu', 3, 75, 5,'2012-01-11');
+                   (129, 'thực hành và lý giải', 6, 50, 4,'2020-01-03'),
+                   (130, 'tính thiết yếu', 3, 75, 5,'2019-12-22');
 select * from `Exam`;    
 -- Add data ExamQuestion:
 INSERT INTO `ExamQuestion` (ExamID, QuestionID)

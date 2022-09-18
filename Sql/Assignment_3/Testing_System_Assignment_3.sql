@@ -118,7 +118,7 @@ select * from `Answer`;
 -- Add data Exam:
 INSERT INTO `Exam` (`Code`, Title, CategoryID, Duration, CreatorID, CreateDate)
 			VALUES (131, 'so sánh giá trị', 12, 60, 9,'2012-03-12'),
-                   (132, 'bôi trơn giảm xóc', 14, 50, 1,'2019-12-18'),
+                   (132, 'bôi trơn giảm xóc', 14, 50, 1,'2019-12-27'),
                    (133, 'không gian hai chiều', 15, 45, 8,'2016-11-19'),
                    (134, 'đọc giá trị hàm', 16, 30, 4,'2014-06-02'),
                    (135, 'nén thể tích', 13, 120, 10,'2016-12-30'),
@@ -130,7 +130,7 @@ INSERT INTO `Exam` (`Code`, Title, CategoryID, Duration, CreatorID, CreateDate)
 select * from `Exam`;
 -- Add data ExamQuestion:
 INSERT INTO `ExamQuestion` (ExamID, QuestionID)
-			VALUES (16, 14),
+			VALUES (15, 14),
                    (11, 1),
                    (15, 12),
                    (4, 15),
@@ -178,15 +178,35 @@ select * from `Account`;
 select count(DepartmentID) as `Số nhân viên thuộc department có id = 2` from `Account` where DepartmentID = 2;
 
 -- Question 11: Lấy ra nhân viên có tên bắt đầu bằng chữ "D" và kết thúc bằng chữ "o":
-SELECT * FROM `Account` WHERE FullName LIKE 'D%o';
+SELECT * FROM `Account` WHERE FullName LIKE '%D%o';
 
 -- Question 12: Xóa tất cả các exam được tạo trước ngày 20/12/2019:
-/*select * from `Exam`;
-Delete from `Exam` where ExamId = 10006
-ALTER TABLE ExamQuestion add check FOREIGN KEY (ExamID) REFERENCES `Exam`(ExamID) ON DELETE CASCADE;*/
+select * from `Exam`;
 
--- Question 13: Xóa tất cả các question có nội dung bắt đầu bằng từ "câu hỏi":
-Delete from `Question` Where Content LIKE 'Câu hỏi%';
+ALTER TABLE `testingsystem`.`examquestion` 
+DROP FOREIGN KEY `examquestion_ibfk_1`;
+ALTER TABLE `testingsystem`.`examquestion` 
+ADD CONSTRAINT `examquestion_ibfk_1`
+  FOREIGN KEY (`ExamID`)
+  REFERENCES `testingsystem`.`exam` (`ExamID`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+    
+Delete from `Exam` WHERE CreateDate < '2019-12-20' ;
+ 
+ -- Question 13: Xóa tất cả các question có nội dung bắt đầu bằng từ "câu hỏi":
+ select * from `Question`;
+
+ALTER TABLE `testingsystem`.`examquestion` 
+DROP FOREIGN KEY `examquestion_ibfk_2`;
+ALTER TABLE `testingsystem`.`examquestion` 
+ADD CONSTRAINT `examquestion_ibfk_2`
+  FOREIGN KEY (`QuestionID`)
+  REFERENCES `testingsystem`.`question` (`QuestionID`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+  
+Delete from `Question` Where Content LIKE 'câu hỏi%'; 
 
 -- Question 14: Update thông tin của account có id = 5 thành tên "Nguyễn Bá Lộc" và email thành loc.nguyenba@vti.com.vn:
 select * from `Account`;

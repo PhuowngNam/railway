@@ -66,6 +66,8 @@ CREATE TABLE `Answer` (
 	isCorrect boolean,
     PRIMARY KEY (AnswerID),
     FOREIGN KEY (QuestionID) REFERENCES Question(QuestionID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 CREATE TABLE `Exam` (
     ExamID int NOT NULL AUTO_INCREMENT,
@@ -83,6 +85,10 @@ CREATE TABLE `ExamQuestion` (
     ExamID int NOT NULL,
     QuestionID int NOT NULL,
     PRIMARY KEY (ExamID,QuestionID),
-    FOREIGN KEY (ExamID) REFERENCES `Exam`(ExamID),
+    FOREIGN KEY (ExamID) REFERENCES `Exam`(ExamID) 
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
     FOREIGN KEY (QuestionID) REFERENCES `Question`(QuestionID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
