@@ -72,7 +72,7 @@ CREATE TABLE `Exam` (
     `Code` int NOT NULL,
     Title varchar(255) NOT NULL,
     CategoryID int NOT NULL,
-	Duration date NOT NULL,
+	Duration int NOT NULL,
     CreatorID int NOT NULL ,
     CreateDate date NOT NULL,
     PRIMARY KEY (ExamID),
