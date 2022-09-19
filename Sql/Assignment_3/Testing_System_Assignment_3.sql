@@ -163,7 +163,7 @@ select GroupName as `Name` from `group` where CreateDate < '2019-12-20';
  
 -- Question 7: Lấy ra ID của question có >= 4 câu trả lời:
 select * from `Question`;
-select sum(QuestionID) >= 4 as ID from `Answer`;
+select count(QuestionID) >= 4 as ID from `Answer`;
 
 -- Question 8: Lấy ra các mã đề thi có thời gian thi >= 60 phút và được tạo trước ngày　20/12/2019:
 select * from `Exam`;
