@@ -153,9 +153,21 @@ select * from `Account`;
 select * from `Account` order by LENGTH(FullName) desc LIMIT 1;
 
 -- Question 5: Lấy ra thông tin account có full name dài nhất và thuộc phòng ban có id = 3:
-SELECT * FROM `Account`
-WHERE DepartmentID = 3
-ORDER BY LENGTH(FullName) DESC LIMIT 1;
+SELECT 
+    *
+FROM
+    `Account`
+WHERE
+    AccountID IN (SELECT 
+            AccountID
+        FROM
+            `Account`
+        WHERE
+            DepartmentID = 3)
+        AND LENGTH(FullName) = (SELECT 
+            MAX(LENGTH(FullName))
+        FROM
+            `Account`);
 
 -- Question 6: Lấy ra tên group đã tham gia trước ngày 20/12/2019:
 select * from `Group`;
