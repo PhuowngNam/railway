@@ -1,4 +1,6 @@
+DROP DATABASE TestingSystem;
 CREATE DATABASE TestingSystem;
+USE TestingSystem;
 CREATE TABLE Department (
     DepartmentID int NOT NULL AUTO_INCREMENT,
     DepartmentName varchar(255) NOT NULL,
@@ -6,7 +8,7 @@ CREATE TABLE Department (
 );
 CREATE TABLE Position (
     PositionID int NOT NULL AUTO_INCREMENT,
-    PositionName ENUM ('Dev','Test','Scrum Master','PM') NOT NULL,
+    PositionName ENUM ('Dev','Test','Scrum Master','PM') unique NOT NULL,
     PRIMARY KEY (PositionID)
 );
 CREATE TABLE `Account` (
@@ -19,7 +21,7 @@ CREATE TABLE `Account` (
     PRIMARY KEY (AccountID),
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
     FOREIGN KEY (PositionID) REFERENCES `Position`(PositionID),
-    CreateDate date NOT NULL
+    CreateDate datetime default now()
 );
 CREATE TABLE `Group` (
     GroupID int NOT NULL AUTO_INCREMENT,
@@ -71,7 +73,7 @@ CREATE TABLE `Answer` (
 );
 CREATE TABLE `Exam` (
     ExamID int NOT NULL AUTO_INCREMENT,
-    `Code` int NOT NULL,
+    `Code` varchar(20) NOT NULL,
     Title varchar(255) NOT NULL,
     CategoryID int NOT NULL,
 	Duration int NOT NULL,
