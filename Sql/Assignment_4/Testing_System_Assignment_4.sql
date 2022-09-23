@@ -1,4 +1,5 @@
 -- Question 1: Viết lệnh để lấy ra danh sách nhân viên và thông tin phòng ban của họ:
+-- nên để left join
 select * from `Account`as ac
 inner join Department as dt
 on ac.DepartmentID = dt.DepartmentID;
@@ -10,14 +11,14 @@ select * from `Account` where CreateDate > '2010-12-20';
 select * from `Account`as ac
 inner join `Position` as ps
 on ac.PositionID = ps.PositionID
-where PositionName = 'Dev' ;
+where PositionName = 'Dev' ; -- nên để ps.PositionName
 
 -- Question 4: Viết lệnh để lấy ra danh sách các phòng ban có >3 nhân viên:
 select DepartmentName from Department as dt
 inner join `Account`as ac
 on dt.DepartmentID = ac.DepartmentID
-GROUP BY DepartmentName
-HAVING count(ac.DepartmentID) > 3;
+GROUP BY DepartmentName --  DepartmentId
+HAVING count(ac.DepartmentID) > 3; -- ac.id
 
 -- Question 5: Viết lệnh để lấy ra danh sách câu hỏi được sử dụng trong đề thi nhiều nhất:
 SELECT 
